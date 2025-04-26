@@ -1,10 +1,10 @@
-# Instalar pacotes necessários (caso não estejam instalados)
+# Instalando os pacotes
 packages <- c("readxl", "ca", "ggplot2", "ggrepel", "knitr", "kableExtra", "stats", "pheatmap", "reshape2", "scales")
 
 installed <- packages %in% rownames(installed.packages())
 if (any(!installed)) install.packages(packages[!installed])
 
-# Carregar pacotes
+# Carregar
 library(readxl)
 library(ca)
 library(ggplot2)
@@ -16,13 +16,13 @@ library(pheatmap)
 library(reshape2)
 library(scales)
 
-# Definir o caminho do arquivo
+# Caminho do arquivo
 caminho_arquivo <- "C:/Users/maria/Desktop/TCC 3 ANOS/Tabela de contingencia - desempregados por escolaridade.xlsx"
 
 # Carregar a tabela de contingência
 dados <- read_excel(caminho_arquivo)
 
-# Verificar e limpar os dados
+# Limpeza
 colnames(dados) <- trimws(colnames(dados))
 dados <- na.omit(dados)
 
@@ -42,7 +42,7 @@ p_valor_tabela <- data.frame(
   p_valor = chi2_test$p.value
 )
 
-# Exibir a tabela formatada
+# Exibir a tabela formatada para exportar
 kable(p_valor_tabela, caption = "Teste Qui-Quadrado para Análise de Correspondência") %>%
   kable_styling(full_width = FALSE)
 
